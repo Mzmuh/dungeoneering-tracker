@@ -3,13 +3,13 @@
 <head>
     <title>Dungeoneering Tracker</title>
     <script src="https://alt1.toolkit.runescape.com/alt1lib.js"></script>
-    window.alt1 && alt1.identifyApp("dungtracker", "Dungeoneering Tracker");
     <script>
         if (!window.alt1) alt1 = window.alt1;
         if (!alt1) alert("Alt1 is not detected. This plugin must be run within Alt1 Toolkit.");
-alt1.identifyApp("dungtracker", "Dungeoneering Tracker");
-alt1.setOverlayApp(true);
-        const overlay = new Overlay("dung-tracker", 350, 260);
+
+        alt1.identifyApp("dungtracker", "Dungeoneering Tracker");
+        alt1.setOverlayApp(true);
+
         let floorStartTime = null;
         let floorNumber = null;
         let floorXp = 0;
@@ -40,8 +40,7 @@ alt1.setOverlayApp(true);
         }
 
         function renderOverlay(elapsedTime = null) {
-            const container = document.getElementById("overlay.container");
-            const latest = sessionLog[sessionLog.length - 1] || {};
+            const container = document.getElementById("overlay-container");
             container.innerHTML = `
                 <div style="background-color: rgba(0,0,0,0.85); color: white; padding: 10px; font-family: sans-serif;">
                     <h2 style="margin: 0 0 10px 0;">🏰 Dungeoneering Tracker</h2>
@@ -52,7 +51,7 @@ alt1.setOverlayApp(true);
                     <p>Tokens: <strong>${tokensEarned}</strong></p>
                     <p>Floors Completed: <strong>${totalFloorsCompleted}</strong></p>
                     <hr style="margin: 8px 0;">
-                    <p><strong>Last Floor:</strong> ${latest.floor || "--"} | XP: ${latest.xp?.toLocaleString() || 0} | Time: ${formatTime(latest.time || 0)}</p>
+                    <p><strong>Last Floor:</strong> ${sessionLog.length > 0 ? sessionLog[sessionLog.length - 1].floor : "--"} | XP: ${sessionLog.length > 0 ? sessionLog[sessionLog.length - 1].xp.toLocaleString() : "0"} | Time: ${sessionLog.length > 0 ? formatTime(sessionLog[sessionLog.length - 1].time) : "--"}</p>
                     <div style="display:flex; gap:8px; margin-top:10px;">
                       <button onclick="manualMarkComplete()">✔️ Mark Floor</button>
                       <button onclick="resetTracker()">🔁 Reset</button>
@@ -114,6 +113,6 @@ alt1.setOverlayApp(true);
     </script>
 </head>
 <body>
-  <div id="overlay-container"></div>  
+    <div id="overlay-container"></div>
 </body>
 </html>
