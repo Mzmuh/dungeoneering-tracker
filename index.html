@@ -7,7 +7,8 @@
     <script>
         if (!window.alt1) alt1 = window.alt1;
         if (!alt1) alert("Alt1 is not detected. This plugin must be run within Alt1 Toolkit.");
-
+alt1.identifyApp("dungtracker", "Dungeoneering Tracker");
+alt1.setOverlayApp(true);
         const overlay = new Overlay("dung-tracker", 350, 260);
         let floorStartTime = null;
         let floorNumber = null;
