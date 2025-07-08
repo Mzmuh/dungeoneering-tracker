@@ -40,7 +40,7 @@ alt1.setOverlayApp(true);
         }
 
         function renderOverlay(elapsedTime = null) {
-            const container = overlay.container;
+            const container = document.getElementById("overlay.container");
             const latest = sessionLog[sessionLog.length - 1] || {};
             container.innerHTML = `
                 <div style="background-color: rgba(0,0,0,0.85); color: white; padding: 10px; font-family: sans-serif;">
@@ -113,5 +113,7 @@ alt1.setOverlayApp(true);
         renderOverlay();
     </script>
 </head>
-<body></body>
+<body>
+  <div id="overlay-container"></div>  
+</body>
 </html>
