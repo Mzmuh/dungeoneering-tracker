@@ -1,21 +1,20 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dungeoneering Tracker</title>
   <meta charset="UTF-8" />
+  <title>Dungeoneering Tracker</title>
   <script src="https://alt1.runescape.wiki/alt1lib.js"></script>
 </head>
 <body>
   <h1>Dungeoneering Tracker</h1>
-  <p>Plugin successfully loaded!</p>
+  <p>If you're seeing this, the plugin UI has loaded successfully.</p>
 
   <script>
     window.alt1Base = true;
-    if (window.alt1) {
+    if (window.alt1 && alt1.identifyApp) {
       alt1.identifyApp("dungeoneering-tracker", "Dungeoneering Tracker");
     } else {
-      document.body.innerHTML += "<p>Alt1 not detected. Please open this in the Alt1 Toolkit.</p>";
+      document.body.innerHTML += "<p><strong>Alt1 not detected.</strong> Please open this page using the Alt1 Toolkit.</p>";
     }
   </script>
 </body>
